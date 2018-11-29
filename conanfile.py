@@ -42,10 +42,12 @@ class RocksdbConan(ConanFile):
                 'CMAKE_POSITION_INDEPENDENT_CODE': True,
                 'WITH_GFLAGS': False,
                 'WITH_TESTS': False,
-                'WITH_LZ4': True,
-                'WITH_ZLIB': True,
-                'WITH_ZSTD': True,
-                'WITH_SNAPPY': True,
+
+                # FIXME: Need to patch find_package() usage to find these appropriately?
+                'WITH_LZ4': False,
+                'WITH_ZLIB': False,
+                'WITH_ZSTD': False,
+                'WITH_SNAPPY': False,
             })
         return cmake
     

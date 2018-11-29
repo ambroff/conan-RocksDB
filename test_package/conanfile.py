@@ -3,12 +3,11 @@ import os
 
 class RocksdbTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    generators = "cmake"
+    generators = "cmake_paths"
 
     def build(self):
         cmake = CMake(self)
-        # Current dir is "test_package/build/<build_id>" and CMakeLists.txt is in "test_package"
-        cmake.configure(source_dir=self.build_folder, build_dir="./")
+        cmake.configure()
         cmake.build()
 
     def imports(self):
