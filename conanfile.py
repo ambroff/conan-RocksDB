@@ -23,7 +23,6 @@ class RocksdbConan(ConanFile):
         "lz4/1.8.3@bincrafters/stable",
         "snappy/1.1.7@bincrafters/stable",
         "zstd/1.3.5@bincrafters/stable",
-        "gflags/2.2.1@bincrafters/stable",
         "glog/0.3.5@bincrafters/stable",
     )
 
@@ -39,7 +38,15 @@ class RocksdbConan(ConanFile):
         cmake = CMake(self)
         cmake.configure(
             source_folder='rocksdb-{}'.format(self.version),
-            defs={'CMAKE_POSITION_INDEPENDENT_CODE': True})
+            defs={
+                'CMAKE_POSITION_INDEPENDENT_CODE': True,
+                'WITH_GFLAGS': False,
+                'WITH_TESTS': False,
+                'WITH_LZ4': True,
+                'WITH_ZLIB': True,
+                'WITH_ZSTD': True,
+                'WITH_SNAPPY': True,
+            })
         return cmake
     
     def build(self):
