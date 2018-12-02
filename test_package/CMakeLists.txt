@@ -1,7 +1,8 @@
 project(PackageTest CXX)
 cmake_minimum_required(VERSION 2.8.12)
 
-include(${CMAKE_BINARY_DIR}/cmake_paths.cmake)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
 
 find_package(RocksDB CONFIG REQUIRED)
 
